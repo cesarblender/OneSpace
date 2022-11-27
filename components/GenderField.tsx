@@ -16,7 +16,7 @@ const GenderField: React.FC<GenderFieldProps> = ({ label, formHook }) => {
   const { register } = formHook;
 
   const options = [
-    { value: "MALE", key: "Homre" },
+    { value: "MALE", key: "Hombre" },
     { value: "FEMALE", key: "Mujer" },
     { value: "NON_BINARY", key: "No binario" },
     { value: "OTHER", key: "Otro" },
