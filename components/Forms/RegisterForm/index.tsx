@@ -31,25 +31,31 @@ const RegisterForm: React.FC = () => {
   const [error, setError] = React.useState<string>("");
 
   const onSubmit: SubmitHandler<Inputs> = async (form) => {
-    setLoading(true);
-    const { status, data } = await axios.post("/api/auth/register", {
-      firstName: form.first_name,
-      lastName: form.last_name,
-      userName: form.user_name,
-      email: form.email,
-      password: form.password,
-      gender: form.gender,
-      birthday: form.birthday,
-    });
+    try {
+      setLoading(true);
+      const { status, data } = await axios.post("/api/auth/register", {
+        firstName: form.first_name,
+        lastName: form.last_name,
+        userName: form.user_name,
+        email: form.email,
+        password: form.password,
+        gender: form.gender,
+        birthday: form.birthday,
+      });
 
-    if (status !== 200) {
-      setError(data.message);
+      if (status !== 200) {
+        setError(data.message);
+        setLoading(false);
+        return;
+      }
+
+      router.replace("/auth/check-email");
+      setLoading(false);
+    } catch (error) {
+      setError((error as Error).message);
       setLoading(false);
       return;
     }
-
-    router.replace("/auth/check-email");
-    setLoading(false);
   };
 
   const reset = () => {
