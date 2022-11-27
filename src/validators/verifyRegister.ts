@@ -6,6 +6,7 @@ import bcrypt from "bcrypt";
 import { capitalize } from "../utils/capitalizeString";
 import { calculateAge } from "../utils/calculateAge";
 import { Gender } from "../entity/User";
+import dayjs from 'dayjs';
 
 const filter = new Filter();
 
@@ -35,7 +36,7 @@ export default async function verifyRegister(
     throw new Error(ERRORS.INVALID_USER_NAME);
   if (!EMAIL_REGEX.test(body.email)) throw new Error(ERRORS.INVALID_EMAIL);
 
-  const birthday = new Date(body.birthday);
+  const birthday = dayjs(body.birthday, "YYYY/MM/DD").toDate();
 
   if (calculateAge(birthday) < 13) throw new Error(ERRORS.TOO_YOUNG);
   if (calculateAge(birthday) > 125) throw new Error(ERRORS.TOO_OLD);
