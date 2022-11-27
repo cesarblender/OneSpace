@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import axios from "axios";
 import { useRouter } from "next/router";
+import dayjs from "dayjs";
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -40,9 +41,7 @@ const RegisterForm: React.FC = () => {
         email: form.email,
         password: form.password,
         gender: form.gender,
-        birthday: dayjs(form.birthday, "DD/MM/YYY").format(
-          "MM/DD/YYYY"
-        ),
+        birthday: dayjs(form.birthday, "DD/MM/YYY").format("MM/DD/YYYY"),
       });
 
       if (status !== 200) {
