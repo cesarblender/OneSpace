@@ -1,0 +1,17 @@
+export const ERRORS = {
+  INVALID_USER_NAME: "The user name is invalid",
+  INVALID_EMAIL: "The email is invalid",
+  INVALID_FIRST_NAME: "The first name is invalid",
+  INVALID_LAST_NAME: "The last name is invalid",
+  SHORT_PASSWORD: "The password length must be greater than 8 characters",
+  LONG_PASSWORD: "The password length must be lower than 60 characters",
+  TOO_YOUNG: "The user age must be greater than 13 years old",
+  TOO_OLD: "The user age must be lower than 125 years old",
+  EMAIL_IN_USE: "A user is already registered using that email",
+  USER_NAME_IN_USE: "A user is already registered using that user name",
+  INVALID_VERIFICATION_CODE: "The verification code was incorrect",
+  INCORRECT_PASSWORD: "The password was incorrect",
+  INCORRECT_EMAIL: "Any user is registered using that email",
+  FIRST_NAME_CONTAINS_OFFENSIVE_WORDS: "The first name contains offensive words",
+  LAST_NAME_CONTAINS_OFFENSIVE_WORDS: "The last name contains offensive words",
+};

@@ -1,0 +1,30 @@
+GET http://localhost:3000/api/hello HTTP/1.1
+
+###
+
+POST http://localhost:3000/api/auth/register HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "test",
+    "lastName": "test",
+    "userName": "test1234",
+    "email": "test@test.com",
+    "password": "password",
+    "gender": "MALE",
+    "birthday": "2000/01/01"
+}
+
+###
+
+GET http://localhost:3000/api/auth/confirm/<<TOKEN>>HTTP/1.1
+
+###
+
+POST http://localhost:3000/api/auth/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "password"
+}
