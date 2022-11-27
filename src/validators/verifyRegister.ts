@@ -38,7 +38,7 @@ export default async function verifyRegister(
 
   const birthday = dayjs(body.birthday, "YYYY/MM/DD").toDate();
 
-  if (calculateAge(birthday) < 13) throw new Error(ERRORS.TOO_YOUNG+ birthday);
+  if (calculateAge(birthday) < 13) throw new Error(ERRORS.TOO_YOUNG+ body.birthday);
   if (calculateAge(birthday) > 125) throw new Error(ERRORS.TOO_OLD);
 
   if (body.password.length < 8) throw new Error(ERRORS.SHORT_PASSWORD);
