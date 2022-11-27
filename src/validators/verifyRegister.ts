@@ -36,7 +36,7 @@ export default async function verifyRegister(
     throw new Error(ERRORS.INVALID_USER_NAME);
   if (!EMAIL_REGEX.test(body.email)) throw new Error(ERRORS.INVALID_EMAIL);
 
-  const birthday = dayjs(body.birthday, "YYYY/MM/DD").toDate();
+  const birthday = dayjs(body.birthday).toDate();
 
   if (calculateAge(birthday) < 13) throw new Error(ERRORS.TOO_YOUNG+ body.birthday);
   if (calculateAge(birthday) > 125) throw new Error(ERRORS.TOO_OLD);
