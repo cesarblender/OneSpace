@@ -34,7 +34,7 @@ const RegisterForm: React.FC = () => {
   const onSubmit: SubmitHandler<Inputs> = async (form) => {
     try {
       setLoading(true);
-      const { status, data } = await axios.post("/api/auth/register", {
+      const { data } = await axios.post("/api/auth/register", {
         firstName: form.first_name,
         lastName: form.last_name,
         userName: form.user_name.toLowerCase(),
@@ -44,7 +44,7 @@ const RegisterForm: React.FC = () => {
         birthday: dayjs(form.birthday, "DD/MM/YYY").format("MM/DD/YYYY"),
       });
 
-      if (status !== 200) {
+      if (data.status !== 200) {
         setError(data.message);
         setLoading(false);
         return;
