@@ -36,11 +36,13 @@ const RegisterForm: React.FC = () => {
       const { status, data } = await axios.post("/api/auth/register", {
         firstName: form.first_name,
         lastName: form.last_name,
-        userName: form.user_name,
+        userName: form.user_name.toLowerCase(),
         email: form.email,
         password: form.password,
         gender: form.gender,
-        birthday: form.birthday,
+        birthday: dayjs(form.birthday, "DD/MM/YYY").format(
+          "MM/DD/YYYY"
+        ),
       });
 
       if (status !== 200) {

@@ -29,7 +29,7 @@ export default async function handler(
       });
       return;
     } catch (error) {
-      res.status(400).json({
+      res.json({
         message: (error as Error).message,
         status: 400,
       });

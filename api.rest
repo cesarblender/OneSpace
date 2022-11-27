@@ -2,13 +2,13 @@ GET http://localhost:3000/api/hello HTTP/1.1
 
 ###
 
-POST http://localhost:3000/api/auth/register HTTP/1.1
+POST https://onespace.tk/api/auth/register HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "test",
-    "lastName": "test",
-    "userName": "test1234",
+    "firstName": "Holasoy",
+    "lastName": "Dieguito",
+    "userName": "holADa",
     "email": "test@test.com",
     "password": "password",
     "gender": "MALE",
