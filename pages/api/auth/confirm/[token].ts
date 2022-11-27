@@ -35,10 +35,10 @@ export default async function handler(
       }
     );
 
-    res.status(201).json({
-      refreshToken,
-      status: 201,
-    });
+    // res.status(201).json({
+    //   refreshToken,
+    //   status: 201,
+    // });
 
     res.redirect('/auth/success')
     return;
