@@ -30,6 +30,7 @@ specifiers:
   next-pwa: ^5.6.0
   nodemailer: ^6.8.0
   nsfwjs: ^2.4.2
+  postgresql: ^0.0.1
   react: 18.2.0
   react-dom: 18.2.0
   react-hook-form: ^7.39.6
@@ -68,6 +69,7 @@ dependencies:
   next-pwa: 5.6.0_mvlbnb5sz6utafrzzodeojfm2i
   nodemailer: 6.8.0
   nsfwjs: 2.4.2_@tensorflow+tfjs@3.18.0
+  postgresql: 0.0.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-hook-form: 7.39.6_react@18.2.0
@@ -4116,6 +4118,11 @@ packages:
     engines: {node: '>= 4'}
     dev: false
 
+  /empty-dir/0.1.0:
+    resolution: {integrity: sha512-EatTcJH5cVS/NXEpy7IWBSpH0WxvJdBnmRkz8Gqr2Jn4GmSqc4Q4E81SmVGOrHHHtCys1SsFKmAoHlhaFkRlmg==}
+    engines: {node: '>= 0.8.0'}
+    dev: false
+
   /encodeurl/1.0.2:
     resolution: {integrity: sha512-TPJXq8JqFaVYm2CWmPvnP2Iyo4ZSM7/QKcSmuMLDObfpH5fi7RUGmd/rTDf+rut/saiDiQEeVTNgAmJEdAOx0w==}
     engines: {node: '>= 0.8'}
@@ -6269,6 +6276,14 @@ packages:
       nanoid: 3.3.4
       picocolors: 1.0.0
       source-map-js: 1.0.2
+    dev: false
+
+  /postgresql/0.0.1:
+    resolution: {integrity: sha512-qtBS+u3m4UxCVTTQBm58IR4TJWZKYVRa/egONxzkQtqEYhFc9HVno4S7//ABFRJR5LeCcrZtcBpZJ5SJkJkGEA==}
+    engines: {node: '>= 0.10.0'}
+    requiresBuild: true
+    dependencies:
+      empty-dir: 0.1.0
     dev: false
 
   /prelude-ls/1.2.1:

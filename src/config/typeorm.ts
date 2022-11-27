@@ -3,7 +3,7 @@ import { DataSource } from "typeorm";
 import { User } from "../entity/User";
 
 const AppDataSource = new DataSource({
-  type: "mysql",
+  type: "postgres",
   host: process.env.DB_HOST as string,
   port: parseInt(process.env.DB_PORT as string),
   username: process.env.DB_USERNAME as string,
