@@ -9,7 +9,7 @@ import LandingContainer from "../components/LandingContainer";
 import { useRouter } from "next/router";
 
 export default function Home() {
-  const end = new Date("11-30-2022 20:00");
+  const end = new Date("12-2-2022 20:00");
 
   const router = useRouter();
 
