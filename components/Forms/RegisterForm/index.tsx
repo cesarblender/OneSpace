@@ -53,7 +53,7 @@ const RegisterForm: React.FC = () => {
       router.replace("/auth/check-email");
       setLoading(false);
     } catch (error) {
-      setError((error as Error).message);
+      setError((error as any).response.data.message);
       setLoading(false);
       return;
     }

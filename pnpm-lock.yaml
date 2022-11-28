@@ -26,6 +26,7 @@ specifiers:
   graphql: ^16.6.0
   jsonwebtoken: ^8.5.1
   next: 13.0.5
+  next-cookie: ^2.8.0
   next-pwa: ^5.6.0
   nodemailer: ^6.8.0
   nsfwjs: ^2.4.2
@@ -65,6 +66,7 @@ dependencies:
   graphql: 16.6.0
   jsonwebtoken: 8.5.1
   next: 13.0.5_mqvh5p7ejg4taogoj6tpk3gd5a
+  next-cookie: 2.8.0_next@13.0.5
   next-pwa: 5.6.0_mvlbnb5sz6utafrzzodeojfm2i
   nodemailer: 6.8.0
   nsfwjs: 2.4.2_@tensorflow+tfjs@3.18.0
@@ -2887,6 +2889,10 @@ packages:
       '@types/node': 18.11.9
     dev: false
 
+  /@types/cookie/0.3.3:
+    resolution: {integrity: sha512-LKVP3cgXBT9RYj+t+9FDKwS5tdI+rPBXaNSkma7hvqy35lc7mAokC2zsqWJH0LaqIt3B962nuYI77hsJoT1gow==}
+    dev: false
+
   /@types/eslint-scope/3.7.4:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
@@ -3853,6 +3859,11 @@ packages:
 
   /cookie-signature/1.0.6:
     resolution: {integrity: sha512-QADzlaHc8icV8I7vbaJXJwod9HWYp8uCqf1xa4OfNu1T7JVxQIrUgOWtHdNDtPiywmFbiS12VjotIXLrKM3orQ==}
+    dev: false
+
+  /cookie/0.4.2:
+    resolution: {integrity: sha512-aSWTXFzaKWkvHO1Ny/s+ePFpvKsPnjc551iI41v3ny/ow6tBG5Vd+FuqGNhh1LxOmVzOlGUriIlOaokOvhaStA==}
+    engines: {node: '>= 0.6'}
     dev: false
 
   /cookie/0.5.0:
@@ -5866,6 +5877,15 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: false
 
+  /next-cookie/2.8.0_next@13.0.5:
+    resolution: {integrity: sha512-wxDAqEcP6i5JRvpSIySm9tu7oSX/VGdkdsANyV2jryA5MpkSdT8rvJGp+qglSGT0AyQq4WPVBbR0nuVXLG+zcA==}
+    peerDependencies:
+      next: '>=10'
+    dependencies:
+      next: 13.0.5_mqvh5p7ejg4taogoj6tpk3gd5a
+      universal-cookie: 4.0.4
+    dev: false
+
   /next-pwa/5.6.0_mvlbnb5sz6utafrzzodeojfm2i:
     resolution: {integrity: sha512-XV8g8C6B7UmViXU8askMEYhWwQ4qc/XqJGnexbLV68hzKaGHZDMtHsm2TNxFcbR7+ypVuth/wwpiIlMwpRJJ5A==}
     peerDependencies:
@@ -7475,6 +7495,13 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       crypto-random-string: 2.0.0
+    dev: false
+
+  /universal-cookie/4.0.4:
+    resolution: {integrity: sha512-lbRVHoOMtItjWbM7TwDLdl8wug7izB0tq3/YVKhT/ahB4VDvWMyvnADfnJI8y6fSvsjh51Ix7lTGC6Tn4rMPhw==}
+    dependencies:
+      '@types/cookie': 0.3.3
+      cookie: 0.4.2
     dev: false
 
   /universalify/2.0.0:

@@ -1,94 +1,82 @@
-export {}
+import * as React from "react";
+import Fields from "./fields";
+import { SubmitHandler, useForm } from "react-hook-form";
+import Snackbar from "@mui/material/Snackbar";
+import Button from "@mui/material/Button";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
+import axios from "axios";
+import { useRouter } from "next/router";
 
-// import * as React from "react";
-// import Fields from "./fields";
-// import { SubmitHandler, useForm } from "react-hook-form";
-// import { useMutation } from "@apollo/client";
-// import { REGISTER_MUTATION } from "./mutation.gql";
-// import dayjs from "dayjs";
-// import { useCookies } from "react-cookie";
-// import Snackbar from "@mui/material/Snackbar";
-// import Button from "@mui/material/Button";
-// import MuiAlert, { AlertProps } from "@mui/material/Alert";
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
-// const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
-//   props,
-//   ref
-// ) {
-//   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-// });
+export type Inputs = {
+  email: string;
+  password: string;
+};
 
-// export type Inputs = {
-//   email: string;
-//   password: string;
-// };
+const LoginForm: React.FC = () => {
+  const form = useForm<Inputs>();
+  const router = useRouter();
+  const [loading, setLoading] = React.useState<boolean>(false);
+  const [error, setError] = React.useState<string>("");
 
-// const LoginForm: React.FC = () => {
-//   const form = useForm<Inputs>();
-//   const [registerMutation, { loading, error, reset }] = useMutation(
-//     REGISTER_MUTATION,
-//     {
-//       onError: (err) => {
-//         console.error(err);
-//       },
-//     }
-//   );
-//   const { t, navigate } = useI18next();
-//   const [_cookies, setCookie] = useCookies(["accessToken", "expiresIn"]);
+  const onSubmit: SubmitHandler<Inputs> = async (form) => {
+    try {
+      setLoading(true);
+      const { data } = await axios.post("/api/auth/login", {
+        email: form.email,
+        password: form.password,
+      });
 
-//   const onSubmit: SubmitHandler<Inputs> = async (form) => {
-//     const { data, errors } = await registerMutation({
-//       variables: {
-//         email: form.email,
-//         password: form.password,
-//       },
-//     });
+      if (data.status !== 200) {
+        setError(data.message);
+        setLoading(false);
+        return;
+      }
 
-//     if (!!error || !!errors) {
-//       console.error(errors);
-//       return;
-//     }
+      router.replace("/feed");
+      setLoading(false);
+    } catch (error) {
+      setError((error as any).response.data.message);
+      setLoading(false);
+      return;
+    }
+  };
 
-//     setCookie("accessToken", data.login.accessToken, { path: "/" });
-//     setCookie("expiresIn", data.login.expiresIn, { path: "/" });
+  const reset = () => {
+    setError("");
+  };
 
-//     navigate("/feed");
-//   };
+  return (
+    <React.Fragment>
+      <form style={{ width: "100%" }} onSubmit={form.handleSubmit(onSubmit)}>
+        <Fields formHook={form} />
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          sx={{ marginTop: 2 }}
+          disabled={loading}
+        >
+          {!loading && "Continuar"}
+          {loading && "Cargando..."}
+        </Button>
+        <Button onClick={() => {}} fullWidth variant="text" sx={{ marginY: 2 }}>
+          Ya estoy registrado
+        </Button>
+      </form>
+      <Snackbar open={!!error} autoHideDuration={6000} onClose={reset}>
+        <Alert onClose={reset} severity="error" sx={{ width: "100%" }}>
+          {error}
+        </Alert>
+      </Snackbar>
+    </React.Fragment>
+  );
+};
 
-//   return (
-//     <React.Fragment>
-//       <form style={{ width: "100%" }} onSubmit={form.handleSubmit(onSubmit)}>
-//         <Fields formHook={form} />
-//         <Button
-//           type="submit"
-//           fullWidth
-//           variant="contained"
-//           sx={{ marginTop: 2 }}
-//           disabled={loading}
-//         >
-//           {/* {!loading && <Trans i18nKey="continue" />} */}
-//           {/* {loading && <Trans i18nKey="loading" />} */}
-//         </Button>
-//         <Button
-//           onClick={() => navigate("/auth/register")}
-//           fullWidth
-//           variant="text"
-//           sx={{ marginY: 2 }}
-//         >
-//           {/* <Trans i18nKey="not_registered" /> */}
-//         </Button>
-//       </form>
-//       <Snackbar
-//         open={!!error}
-//         autoHideDuration={6000}
-//         onClose={reset}
-//       >
-//         <Alert onClose={reset} severity="error" sx={{ width: "100%" }}>
-//           {error?.message}
-//         </Alert>
-//       </Snackbar>
-//     </React.Fragment>
-//   );
-// };
-
-// export default LoginForm;
+export default LoginForm;
