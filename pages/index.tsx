@@ -6,12 +6,9 @@ import HomeLayout from "../layouts/HomeLayout";
 import useCountDown from "../src/hooks/useCountdown";
 import Countdown from "../components/Countdown";
 import LandingContainer from "../components/LandingContainer";
-import { useRouter } from "next/router";
 
 export default function Home() {
   const end = new Date("12-2-2022 20:00");
-
-  const router = useRouter();
 
   const { expired } = useCountDown({ end });
 
@@ -32,7 +29,6 @@ export default function Home() {
             size="large"
             href="/auth/register"
             component={Link}
-            onDoubleClick={() => router.replace('/auth/pre-register')}
           >
             COMENZAR AHORA
           </Button>
