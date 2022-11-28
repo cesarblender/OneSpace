@@ -7,7 +7,7 @@ export default function PreRegister() {
   return (
     <AuthLayout>
       <Typography variant="h4" component="h2" sx={{ textAlign: "center" }}>
-        Register
+        Registro
       </Typography>
       <RegisterForm />
     </AuthLayout>
