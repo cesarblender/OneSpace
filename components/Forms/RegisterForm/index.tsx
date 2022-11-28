@@ -41,7 +41,7 @@ const RegisterForm: React.FC = () => {
         email: form.email,
         password: form.password,
         gender: form.gender,
-        birthday: dayjs(form.birthday, "DD/MM/YYY").toDate(),
+        birthday: dayjs(form.birthday, "DD/MM/YYYY").toDate(),
       });
 
       if (data.status !== 200) {
