@@ -19,7 +19,7 @@ export default function Home() {
           OneSpace
         </Typography>
         <Typography variant="h4" component="h3" sx={{ textAlign: "center" }}>
-          Conoce e interactúa con peronas en One Space
+          Conoce e interactúa con personas en One Space
         </Typography>
         {!expired && <Countdown end={end} />}
         {expired && (
